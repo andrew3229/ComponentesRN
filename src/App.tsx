@@ -1,8 +1,13 @@
-import { Text, View, StyleSheet } from 'react-native'
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { Navigator } from './presentation/navigator/Navigator';
+
+
+
 export const App = () => {
   return (
-    <View>
-      <Text> App</Text>
-    </View>
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
   )
 }
