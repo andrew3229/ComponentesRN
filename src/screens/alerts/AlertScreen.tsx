@@ -3,6 +3,11 @@ import { Title } from '../../presentation/components/ui/Title'
 import { CustomView } from '../../presentation/components/ui/CustomView'
 import { globalStyles } from '../../config/theme/theme'
 import { Button } from '../../presentation/components/ui/Button'
+import prompt from 'react-native-prompt-android';
+import { showPromptAdapter } from '../../config/theme/adapters/prompt.adapter'
+
+
+
 export const AlertScreen = () => {
 
     const createTwoButtonAlert = () =>
@@ -35,6 +40,36 @@ export const AlertScreen = () => {
                 onDismiss: () => console.log('onDismiss'),
             });
 
+
+    const showPrompt = () => {
+
+        showPromptAdapter({
+            title: 'Cual es nombre',
+            subTitle: 'Lorem ipsum dolor sit amet.',
+            defaultValue: 'Valor por defecto',
+            placeholder: 'Placeholder',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'destructive',
+                },
+                { text: 'Continuar', onPress: () => console.log('OK Pressed') },
+            ]
+
+        })
+
+
+        // Alert.prompt(
+        //     'Cual es nombre',
+        //     'Lorem ipsum dolor sit amet.',
+        //     (valor: string) => console.log('valor:', valor),
+        //     'secure-text',
+        //     'Valor por defecto',
+        //     'number-pad'
+
+        // )
+    }
     return (
         <CustomView style={globalStyles.globalMargin}>
             <Title text='Alert Screen' />
@@ -55,7 +90,7 @@ export const AlertScreen = () => {
 
             <Button
                 text='Prompt - Input'
-                onPress={() => { }}
+                onPress={showPrompt}
             />
         </CustomView>
     )
