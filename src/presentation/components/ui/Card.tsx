@@ -16,7 +16,7 @@ export const Card = ({ style, children }: Props) => {
                 }, style
             ]}
         >
-            <Text>{children}</Text>
+            {children}
         </View>
     )
 }
