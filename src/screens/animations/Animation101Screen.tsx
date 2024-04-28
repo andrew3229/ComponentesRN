@@ -1,46 +1,52 @@
 import { Text, View, StyleSheet, Pressable, Animated, Easing } from 'react-native';
 import { colors } from '../../config/theme/theme';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useAnimation } from '../../presentation/hooks/useAnimation';
+import { ThemeContext } from '../../presentation/context/ThemeContext';
+import { CustomView } from '../../presentation/components/ui/CustomView';
 export const Animation101Screen = () => {
 
     const { fadeIn, fadeOut, animatedOpacity, animatedTop, startMovingTopPosition } = useAnimation();
+    const { colors } = useContext(ThemeContext);
+
     return (
-        <View style={styles.container}>
-            <Animated.View
-                style={[
-                    styles.purpleBox,
-                    {
-                        opacity: animatedOpacity,
-                        transform: [{
-                            translateY: animatedTop
-                        }]
-                    }
-                ]}
+        <CustomView>
+            <View style={styles.container}>
+                <Animated.View
+                    style={[
+                        styles.purpleBox,
+                        {
+                            opacity: animatedOpacity,
+                            transform: [{
+                                translateY: animatedTop
+                            }]
+                        }
+                    ]}
 
-            />
+                />
 
-            <Pressable
-                onPress={() => {
-                    fadeIn({});
-                    startMovingTopPosition({
-                        initialPosition: -200,
-                        easing: Easing.inOut(Easing.quad),
-                        duration: 800
-                    });
-                }}
-                style={{ marginTop: 10 }}
-            >
-                <Text>FadeIn</Text>
-            </Pressable>
+                <Pressable
+                    onPress={() => {
+                        fadeIn({});
+                        startMovingTopPosition({
+                            initialPosition: -200,
+                            easing: Easing.inOut(Easing.quad),
+                            duration: 800
+                        });
+                    }}
+                    style={{ marginTop: 10 }}
+                >
+                    <Text style={{ color: colors.text }}>FadeIn</Text>
+                </Pressable>
 
-            <Pressable
-                onPress={() => fadeOut({})}
-                style={{ marginTop: 10 }}
-            >
-                <Text>FadeOut</Text>
-            </Pressable>
-        </View >
+                <Pressable
+                    onPress={() => fadeOut({})}
+                    style={{ marginTop: 10 }}
+                >
+                    <Text style={{ color: colors.text }}>FadeOut</Text>
+                </Pressable>
+            </View >
+        </CustomView>
     )
 }
 

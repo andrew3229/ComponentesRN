@@ -4,6 +4,7 @@ import { globalStyles } from '../../config/theme/theme';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Title } from '../../presentation/components/ui/Title';
 import { MenuItem } from '../../presentation/components/ui/MenuItem';
+import { CustomView } from '../../presentation/components/ui/CustomView';
 
 const animationsMenuItems = [
     // 01-animationMenuItems
@@ -78,56 +79,61 @@ export const menuItems = [
 ];
 
 export const HomeScreens = () => {
+    
+
     return (
-        <View style={globalStyles.mainContainer}>
-            <View style={globalStyles.globalMargin}>
-                <ScrollView>
-                    <Title text='Opciones de Menú' safe />
+        <CustomView>
+            <View style={globalStyles.mainContainer}>
+                <View style={globalStyles.globalMargin}>
+                    <ScrollView>
+                        <Title text='Opciones de Menú' safe />
 
-                    {
-                        animationsMenuItems.map((item, index) => (
-                            <MenuItem
-                                key={item.component}
-                                {...item}
-                                isFirst={index === 0}
-                                isLast={index === animationsMenuItems.length - 1}
+                        {
+                            animationsMenuItems.map((item, index) => (
+                                <MenuItem
+                                    key={item.component}
+                                    {...item}
+                                    isFirst={index === 0}
+                                    isLast={index === animationsMenuItems.length - 1}
 
-                            />
-                        ))
-                    }
+                                />
+                            ))
+                        }
 
-                    <View style={{ marginTop: 30 }} />
+                        <View style={{ marginTop: 30 }} />
 
 
 
-                    {
-                        menuItems.map((item, index) => (
-                            <MenuItem
-                                key={item.component}
-                                {...item}
-                                isFirst={index === 0}
-                                isLast={index === menuItems.length - 1}
+                        {
+                            menuItems.map((item, index) => (
+                                <MenuItem
+                                    key={item.component}
+                                    {...item}
+                                    isFirst={index === 0}
+                                    isLast={index === menuItems.length - 1}
 
-                            />
-                        ))
-                    }
+                                />
+                            ))
+                        }
 
-                    <View style={{ marginTop: 30 }} />
+                        <View style={{ marginTop: 30 }} />
 
-                    {
-                        uiMenuItems.map((item, index) => (
-                            <MenuItem
-                                key={item.component}
-                                {...item}
-                                isFirst={index === 0}
-                                isLast={index === uiMenuItems.length - 1}
+                        {
+                            uiMenuItems.map((item, index) => (
+                                <MenuItem
+                                    key={item.component}
+                                    {...item}
+                                    isFirst={index === 0}
+                                    isLast={index === uiMenuItems.length - 1}
 
-                            />
-                        ))
-                    }
+                                />
+                            ))
+                        }
 
-                </ScrollView>
-            </View>
-        </View >
+                    </ScrollView>
+                </View>
+            </View >
+        </CustomView>
+
     )
 }

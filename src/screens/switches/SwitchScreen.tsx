@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CustomView } from '../../presentation/components/ui/CustomView'
 import { Card } from '../../presentation/components/ui/Card';
 import { Switch } from 'react-native-gesture-handler';
 import { CustomSwitch } from '../../presentation/components/ui/CustomSwitch';
 import { Separator } from '../../presentation/components/ui/Separator';
+import { ThemeContext } from '../../presentation/context/ThemeContext';
 export const SwitchScreen = () => {
 
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const { colors } = useContext(ThemeContext);
+
 
     const [state, setState] = useState({
         isActive: true,
@@ -16,7 +19,7 @@ export const SwitchScreen = () => {
     })
 
     return (
-        <CustomView style={{ marginTop: 100, paddingHorizontal: 10 }}>
+        <CustomView >
 
             <Card>
                 <CustomSwitch
